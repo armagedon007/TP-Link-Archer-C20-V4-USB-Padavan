@@ -48,10 +48,7 @@ jobs:
       run: |
         echo "=== Проверка board.mk ==="
         cat padavan-ng/trunk/configs/boards/TPLINK/TL_C20-V4/board.mk | grep USB_PORTS
-        
-        echo "=== Проверка board.h ==="
-        cat padavan-ng/trunk/configs/boards/TPLINK/TL_C20-V4/board.h 2>/dev/null | grep USB_PORTS || echo "❌ board.h не найден!"
-        
+                
         echo "=== Проверка .config ==="
         cat padavan-ng/trunk/.config | grep USB_PORTS
         
