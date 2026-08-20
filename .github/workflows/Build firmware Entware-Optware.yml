@@ -92,15 +92,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: release-${{ env.BUILD_TIMESTAMP }}
-        release_name: Padavan TP-Link Archer C5 V4 Entware/Optware (${{ env.BUILD_TIMESTAMP }})
+        release_name: Padavan TP-Link Archer C20 V4 USB Entware/Optware (${{ env.BUILD_TIMESTAMP }})
         body: |
-          ## 💝 Поддержать разработку
-
-          Если вам нравится прошивка, вы можете поддержать разработку:
-
-          - [Купить кофе](https://pay.cloudtips.ru/p/afb55f71)
-          - [Поддержать на Boosty](https://boosty.to/danayer)
-
           📋 Инструкция прошивки
           
           🔰 Подготовка:
