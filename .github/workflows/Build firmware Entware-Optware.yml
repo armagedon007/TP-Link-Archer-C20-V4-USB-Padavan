@@ -48,18 +48,14 @@ jobs:
       run: |
         echo "=== Проверка board.mk ==="
         cat padavan-ng/trunk/configs/boards/TPLINK/TL_C20-V4/board.mk | grep USB_PORTS
-                
-        echo "=== Проверка .config ==="
-        cat padavan-ng/trunk/.config | grep USB_PORTS
-        
-        echo "=== Проверка флагов компилятора в Makefile ==="
-        grep -r "DBOARD_NUM_USB_PORTS" padavan-ng/trunk/ --include="*.mk" | head -5
 
     - name: Build firmware
       run: |
         cp build.config padavan-ng/trunk/.config
         pushd padavan-ng/trunk
+        cat padavan-ng/trunk/configs/boards/TPLINK/TL_C20-V4/board.mk | grep USB_PORTS
         ./clear_tree.sh
+        cat padavan-ng/trunk/configs/boards/TPLINK/TL_C20-V4/board.mk | grep USB_PORTS
         ./build_firmware.sh
         popd
 
