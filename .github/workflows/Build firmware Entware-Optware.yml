@@ -93,7 +93,7 @@ jobs:
               🛡️ Отключаем брандмауэр
               🔌 Подключаем кабель в LAN порт
               ⚙️ Настраиваем IP: 192.168.0.66
-              💿 Распаковываем и запускаем Tftpd64
+              💿 Запускаем Tftpd64
               📁 Копируем tp_recovery.bin в папку TFTP
 
 
@@ -189,16 +189,6 @@ jobs:
         asset_path: ./tp_recovery.bin
         asset_name: tp_recovery.bin
         asset_content_type: application/octet-stream
-
-    - name: Upload TFTP Server Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./tftpd64.464.zip
-        asset_name: tftpd64.464.zip
-        asset_content_type: application/zip
 
     - name: Check firmware size
       run: |
