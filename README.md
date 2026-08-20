@@ -1,18 +1,11 @@
-## 💝 Поддержать разработку
+# 📡 Прошивка Padavan для TP-Link Archer C20 V4 USB
 
-Если вам нравится прошивка, вы можете поддержать разработку:
-
-- [Купить кофе](https://pay.cloudtips.ru/p/afb55f71)
-- [Поддержать на Boosty](https://boosty.to/danayer)
-
-# 📡 Прошивка Padavan для TP-Link Archer C5 V4
-
-Кастомная сборка прошивки Padavan для роутера TP-Link Archer C5 V4 на чипсете MT7620.
+Кастомная сборка прошивки Padavan для роутера TP-Link Archer C20 V4 на чипсете MT7628.
 
 ## ⭐ Особенности
 
-- 🚀 Процессор: MT7620 @ 600MHz
-- 📶 Wi-Fi: 2.4ГГц (MT7620 v2.7) + 5ГГц (MT7612E v3.0)
+- 🚀 Процессор: MT7628 @ 600MHz
+- 📶 Wi-Fi: 2.4ГГц (MT7628 v2.7) + 5ГГц (MT7610E v3.0)
 - 🌐 Поддержка IPv6 и IPSec
 - 🔒 Dropbear SSH с оптимизированным кодом
 - 🔐 OpenVPN и EoIP туннели
