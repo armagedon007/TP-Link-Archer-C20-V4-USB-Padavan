@@ -27,7 +27,6 @@ jobs:
         git clone -b "$PADAVAN_BRANCH" "$PADAVAN_REPO"
         git -C padavan-ng checkout "$PADAVAN_COMMIT"
         wget -qO- "$PADAVAN_TOOLCHAIN_URL" | tar -C padavan-ng --zstd -xf -
-        sed -i 's/^BOARD_NUM_USB_PORTS=0$/BOARD_NUM_USB_PORTS=1/' padavan-ng/trunk/configs/boards/TPLINK/TL_C20-V4/board.mk
 
     - name: Install themes
       run: |
@@ -44,18 +43,13 @@ jobs:
     - name: Run custom pre-build script
       run: '[[ -f pre-build.sh ]] && . pre-build.sh || :'
 
-    - name: Debug USB config
-      run: |
-        echo "=== Проверка board.mk ==="
-        cat padavan-ng/trunk/configs/boards/TPLINK/TL_C20-V4/board.mk | grep USB_PORTS
-
     - name: Build firmware
       run: |
         cp build.config padavan-ng/trunk/.config
+        sed -i 's/^BOARD_NUM_USB_PORTS=0$/BOARD_NUM_USB_PORTS=1/' padavan-ng/trunk/configs/boards/TPLINK/TL_C20-V4/board.mk
+        cp configs/kernel-3.4.x.config padavan-ng/trunk/configs/boards/TPLINK/TL_C20-V4/kernel-3.4.x.config
         pushd padavan-ng/trunk
-        cat configs/boards/TPLINK/TL_C20-V4/board.mk | grep USB_PORTS
         ./clear_tree.sh
-        cat configs/boards/TPLINK/TL_C20-V4/board.mk | grep USB_PORTS
         ./build_firmware.sh
         popd
 
