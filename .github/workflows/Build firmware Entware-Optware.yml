@@ -53,9 +53,9 @@ jobs:
       run: |
         cp build.config padavan-ng/trunk/.config
         pushd padavan-ng/trunk
-        cat padavan-ng/trunk/configs/boards/TPLINK/TL_C20-V4/board.mk | grep USB_PORTS
+        cat configs/boards/TPLINK/TL_C20-V4/board.mk | grep USB_PORTS
         ./clear_tree.sh
-        cat padavan-ng/trunk/configs/boards/TPLINK/TL_C20-V4/board.mk | grep USB_PORTS
+        cat configs/boards/TPLINK/TL_C20-V4/board.mk | grep USB_PORTS
         ./build_firmware.sh
         popd
 
