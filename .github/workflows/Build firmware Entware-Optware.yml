@@ -46,6 +46,7 @@ jobs:
     - name: Build firmware
       run: |
         cp build.config padavan-ng/trunk/.config
+        sed -i 's/^BOARD_NUM_USB_PORTS=0$/BOARD_NUM_USB_PORTS=1/' padavan-ng/trunk/configs/boards/TPLINK/TL_C20-V4-USB/board.mk
         pushd padavan-ng/trunk
         ./clear_tree.sh
         ./build_firmware.sh
@@ -64,21 +65,17 @@ jobs:
         dd if=/dev/zero of=128kempty.bin bs=128k count=1
         cat 128kempty.bin "$FW_FILE_NAME" > tp_recovery.bin
         
-        # Download TFTP server
-        wget -O tftpd64.464.zip https://github.com/danayer/TP-Link-Archer-C5-V4-Padavan/releases/download/release-2025.04.22_01.20.13/tftpd64.464.zip
-        
         echo "FW_FILE_NAME=$FW_FILE_NAME" >> $GITHUB_ENV
         echo "BUILD_TIMESTAMP=$(date '+%Y.%m.%d_%H.%M.%S')" >> $GITHUB_ENV
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: padavan-ng_${{ env.CONFIG_VENDOR }}_${{ env.CONFIG_FIRMWARE_PRODUCT_ID }}_${{ env.BUILD_TIMESTAMP }}
         retention-days: 7
         path: |
           ${{ env.FW_FILE_NAME }}
           tp_recovery.bin
-          tftpd64.464.zip
 
     - name: Create Release
       id: create_release
