@@ -47,6 +47,8 @@ jobs:
       run: |
         cp build.config padavan-ng/trunk/.config
         sed -i 's/^BOARD_NUM_USB_PORTS=0$/BOARD_NUM_USB_PORTS=1/' padavan-ng/trunk/configs/boards/TPLINK/TL_C20-V4/board.mk
+        export EXTRA_CFLAGS="-DBOARD_NUM_USB_PORTS=1"
+        export BOARD_NUM_USB_PORTS=1
         pushd padavan-ng/trunk
         ./clear_tree.sh
         ./build_firmware.sh
